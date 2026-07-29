@@ -17,7 +17,7 @@
   <img src="assets/terminal.svg" width="900" alt="The same finishing task: a plain agent writes a wall of invented blockers and next steps; NoYap answers in two honest lines and flags the one real risk.">
 </p>
 
-<p align="center"><sub>Real before/after model output → <a href="examples/">examples/</a></sub></p>
+<p align="center"><sub>📝 Writeup: <a href="https://dev.to/pedrosantospt/telling-an-ai-to-be-concise-can-make-it-generate-more-tokens-i-benchmarked-it-across-5-models-h2l">Telling an AI to "be concise" can make it generate <em>more</em> tokens</a>  ·  Real before/after model output → <a href="examples/">examples/</a></sub></p>
 
 ## Why NoYap
 
