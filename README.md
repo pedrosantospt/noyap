@@ -17,6 +17,8 @@
   <img src="assets/terminal.svg" width="900" alt="The same finishing task: a plain agent writes a wall of invented blockers and next steps; NoYap answers in two honest lines and flags the one real risk.">
 </p>
 
+<p align="center"><sub>Real before/after model output → <a href="examples/">examples/</a></sub></p>
+
 ## Why NoYap
 
 - **Fewer tokens on every model.** 12–58% less model output than a plain agent on Haiku, Sonnet, Opus 4.8, Fable, and Opus 5 — the **only** skill that beats the baseline on all five. Less to pay for, less to read.
@@ -27,14 +29,60 @@
 
 **Works with** — Claude Code (one-command install + always-on hook), Cursor,
 Windsurf, GitHub Copilot, and Codex, or any agent that loads a `SKILL.md` or
-system prompt. [Install ↓](#install)
+system prompt.
+
+## Install
+
+> [!TIP]
+> Want the full step-by-step for your agent — including how to verify it works and how to uninstall? See **[`docs/install.md`](docs/install.md)**.
+
+**Claude Code** — install it as a plugin from inside the agent. No clone, no Python:
+
+```text
+/plugin marketplace add pedrosantospt/noyap
+/plugin install noyap@noyap
+```
+
+That loads the skill and keeps NoYap active every session (via a `SessionStart` hook).
+
+**Other agents** — clone the repo and copy the matching file into your config:
+
+```bash
+git clone https://github.com/pedrosantospt/noyap && cd noyap
+```
+
+| Agent surface | File |
+|---|---|
+| Core skill | `skills/noyap/SKILL.md` |
+| Cursor | `.cursor/rules/noyap.mdc` |
+| Windsurf | `.windsurf/rules/noyap.md` |
+| GitHub Copilot | `.github/copilot-instructions.md` |
+| Codex | `cp skills/noyap/SKILL.md ~/.codex/skills/noyap/SKILL.md` |
+
+Not using the plugin? The stdlib-Python installer still works from a clone:
+`python3 install.py --with-hook` (skill + always-on hook; backs up `settings.json`,
+`--dry-run` to preview, `--uninstall` to remove).
+
+## Usage
+
+```text
+Use NoYap for this thread.        # on until you say "stop noyap"
+/noyap tiny                       # 1–3 lines
+/noyap full                       # security/migration/detail — spend the words
+```
+
+Budgets: **tiny** (trivial confirmations), **normal** (default), **full**
+(security, legal, migrations, destructive actions, explicit detail requests).
+Budget persists until you change it.
 
 ## What makes it different
 
-Generic "be concise" prompts make the answer *look* short while the model still
-generates a full essay to get there. NoYap is different — an **output protocol**
-that decides *what belongs in the response at all*, so it cuts what you read
-**and** what the model bills for:
+A generic "be concise" prompt is an unreliable way to spend fewer tokens.
+[We tested one](benchmark/results/be-concise.md) — the literal instruction
+_"Be concise. Keep your answer short."_ — and it *added* output on 2 of 5 models
+(Sonnet 5 +28%, Opus 4.8 +42%) while trimming it on 3. NoYap is different — an
+**output protocol** that decides *what belongs in the response at all*, so it
+cuts what you read **and** what the model bills for:
 
 - **Answer first.** Result on line one. Explanation only if it changes what you do.
 - **Two cuts.** First delete sections that don't earn their place (recap, narration, generic caveats). Then tighten the words that survive. Deleting beats compressing.
@@ -44,42 +92,6 @@ that decides *what belongs in the response at all*, so it cuts what you read
 
 Not caveman-speak, not a code-minimizer. The two gates are the part generic
 "be brief" prompts don't have: NoYap is short **and honest**.
-
-## Before / After
-
-Real model output, same prompt, verbatim from the benchmark below. (The terminal
-image at the top is the migration case in full.)
-
-**Recommendation** — "SQLite or PostgreSQL for a multi-user SaaS?"
-
-Baseline:
-
-> PostgreSQL.
->
-> SQLite is single-writer, so concurrent writes will queue and timeout under load. PostgreSQL handles multi-user concurrency, distributed transactions, and connection pooling—all required for SaaS. SQLite works for prototypes or read-heavy single-tenant apps, but not for this use case.
-
-NoYap:
-
-> PostgreSQL.
->
-> You need transactions, relational queries, and concurrent writes; SQLite serializes writers — not suitable for multi-user SaaS.
-
-**Reporting an unverified change** (the proof gate)
-
-Baseline:
-
-> Changed `api/client.py` to add a urllib timeout. Tests haven't been run yet — before wrapping up, run the test suite to verify the change works (`python3 benchmark/bench.py` or the full test suite, depending on your setup).
-
-NoYap:
-
-> Added urllib timeout to `api/client.py`.
->
-> Not run.
-
-The baseline pads *and* invents a command that has nothing to do with the task.
-NoYap states the fact and flags — honestly — that nothing was verified.
-
-More side-by-side, real model output: [`examples/`](examples/).
 
 ## Benchmark
 
@@ -103,6 +115,11 @@ generated and billed (fewer is better). Full reports with provenance:
 NoYap is **the lowest-token arm on all five models, and the only skill below
 baseline on every one** — 12–58% under the plain baseline. Its answers are also
 consistently among the shortest to read.
+
+Would a plain _"be concise"_ instruction do the same job?
+[We tested that separately](benchmark/results/be-concise.md) — it's unreliable,
+*adding* output on 2 of 5 models. (Different run count and baselines; read it on
+its own terms, not against this table.)
 
 **Honest scope:**
 
@@ -159,58 +176,6 @@ in: the `SessionStart` hook injects a *compact* ruleset (not the full
 `SKILL.md`), and because that ruleset is a stable prefix, prompt caching bills it
 at ~0.1× after the first turn.
 
-## Install
-
-> [!TIP]
-> Want the full step-by-step for your agent — including how to verify it works and how to uninstall? See **[`docs/install.md`](docs/install.md)**.
-
-**Claude Code** — install it as a plugin from inside the agent. No clone, no Python:
-
-```text
-/plugin marketplace add pedrosantospt/noyap
-/plugin install noyap@noyap
-```
-
-That loads the skill and keeps NoYap active every session (via a `SessionStart` hook).
-
-**Other agents** — clone the repo and copy the matching file into your config:
-
-```bash
-git clone https://github.com/pedrosantospt/noyap && cd noyap
-```
-
-| Agent surface | File |
-|---|---|
-| Core skill | `skills/noyap/SKILL.md` |
-| Cursor | `.cursor/rules/noyap.mdc` |
-| Windsurf | `.windsurf/rules/noyap.md` |
-| GitHub Copilot | `.github/copilot-instructions.md` |
-| Codex | `cp skills/noyap/SKILL.md ~/.codex/skills/noyap/SKILL.md` |
-
-Not using the plugin? The stdlib-Python installer still works from a clone:
-`python3 install.py --with-hook` (skill + always-on hook; backs up `settings.json`,
-`--dry-run` to preview, `--uninstall` to remove).
-
-## Usage
-
-```text
-Use NoYap for this thread.        # on until you say "stop noyap"
-/noyap tiny                       # 1–3 lines
-/noyap full                       # security/migration/detail — spend the words
-```
-
-Budgets: **tiny** (trivial confirmations), **normal** (default), **full**
-(security, legal, migrations, destructive actions, explicit detail requests).
-Budget persists until you change it.
-
-## When it does NOT cut
-
-Terseness never overrides these: input validation at trust boundaries, error
-handling that prevents data loss, security and destructive-action warnings, a
-specific real risk, ordered steps where a fragment could be misread, and
-anything you explicitly asked to see. Short output can still be wrong — NoYap
-trims ceremony, not correctness.
-
 ## Repository map
 
 ```text
@@ -224,13 +189,6 @@ benchmark/                     live + deterministic fixture benchmark
 research/                      ecosystem notes and sources
 tests/                         stdlib unittest coverage
 ```
-
-## Honest limitations
-
-- The benchmark suite is aligned to NoYap's job; it is not a universal ranking.
-- Dollar cost is not claimed — see the benchmark note.
-- Estimated tokens are deterministic approximations, not exact tokenizer counts.
-- Brevity never overrides correctness, safety, or verification honesty.
 
 ## Contributing
 
