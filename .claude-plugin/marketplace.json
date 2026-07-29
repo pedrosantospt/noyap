@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "noyap",
+  "description": "Result-first output discipline for AI coding agents. No yap. Only signal.",
+  "owner": {
+    "name": "Pedro Santos",
+    "url": "https://github.com/pedrosantospt"
+  },
+  "plugins": [
+    {
+      "name": "noyap",
+      "description": "Answer first, prove only what actually ran, flag only specific risk, then stop. Cuts output while keeping correctness and honesty.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

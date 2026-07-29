@@ -1,0 +1,59 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">NoYap vs a plain agent</title>
+  <desc id="d">The same finishing task answered by a plain agent (a wall of invented blockers and next steps) and by NoYap (two honest lines naming the one real risk).</desc>
+  <rect width="1200" height="700" rx="16" fill="#0B0B0B"/>
+  <rect x="0.5" y="0.5" width="1199" height="699" rx="15.5" fill="none" stroke="#232323"/>
+
+  <!-- title bar -->
+  <rect x="1" y="1" width="1198" height="46" rx="15" fill="#141414"/>
+  <rect x="1" y="30" width="1198" height="17" fill="#141414"/>
+  <circle cx="26" cy="24" r="6" fill="#FF5F56"/>
+  <circle cx="46" cy="24" r="6" fill="#FFBD2E"/>
+  <circle cx="66" cy="24" r="6" fill="#27C93F"/>
+  <text x="600.0" y="29" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#7C7C7C">finishing a risky migration — final response</text>
+
+  <!-- divider -->
+  <line x1="600.0" y1="64" x2="600.0" y2="636" stroke="#232323"/>
+
+  <!-- LEFT: baseline -->
+  <text x="34" y="92" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="800" fill="#FF6B6B" letter-spacing="1.5">WITHOUT NOYAP</text>
+  <text x="566.0" y="92" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#7C7C7C">~158 tokens</text>
+  <text x="34" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">The migration is incomplete and will break v1 API</text>
+  <text x="34" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">clients.</text>
+  <text x="34" y="201" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">Blockers:</text>
+  <text x="34" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">1. Tests haven&#x27;t run — changes unverified</text>
+  <text x="34" y="247" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">2. v1 API compatibility — clients still read the</text>
+  <text x="34" y="270" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">   `status` column you removed; they&#x27;ll get</text>
+  <text x="34" y="293" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">   null / error responses</text>
+  <text x="34" y="339" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">Next steps:</text>
+  <text x="34" y="362" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">- Controlled deprecation: add a deprecation</text>
+  <text x="34" y="385" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">  window, keep the column populated one release,</text>
+  <text x="34" y="408" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">  communicate to clients</text>
+  <text x="34" y="431" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">- If v1 must stay compatible: restore the column</text>
+  <text x="34" y="454" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">  or add a compatibility shim that populates it</text>
+  <text x="34" y="477" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">- Either way: run tests first</text>
+  <text x="34" y="523" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8B8B8B" xml:space="preserve">Which approach fits your release strategy?</text>
+  <!-- fade hint that it keeps going -->
+  <rect x="2" y="580" width="596.0" height="54" fill="url(#fade)"/>
+
+  <!-- RIGHT: noyap -->
+  <text x="634.0" y="92" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="800" fill="#9BE31C" letter-spacing="1.5">WITH NOYAP</text>
+  <text x="1166" y="92" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#7C7C7C">~35 tokens</text>
+  <text x="634" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#F2F2F2" xml:space="preserve">Migration drops the legacy `status` column.</text>
+  <text x="634" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#F2F2F2" xml:space="preserve">Code updated, not run.</text>
+  <text x="634" y="201" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#9BE31C" xml:space="preserve">Risk: v1 API clients still read `status` —</text>
+  <text x="634" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#F2F2F2" xml:space="preserve">they break until upgraded.</text>
+
+  <!-- badge -->
+  <rect x="634.0" y="550" width="360" height="40" rx="8" fill="#9BE31C"/>
+  <text x="654.0" y="576" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="800" fill="#0B0B0B">4.5× less output · same facts</text>
+  <text x="634.0" y="608" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#7C7C7C">No invented blockers. No fake &quot;next steps.&quot; The one real</text>
+  <text x="634.0" y="628" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#7C7C7C">risk, named — and it admits nothing was verified.</text>
+
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B0B0B" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0B0B0B" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+</svg>

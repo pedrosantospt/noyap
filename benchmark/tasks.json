@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "task-01",
+      "title": "Fix duplicate refresh",
+      "prompt": "Fix the duplicate refresh-token branch in a TypeScript auth helper without changing unrelated behavior.",
+      "evaluation_notes": "Prefer a minimal branch fix and keep token expiry behavior intact.",
+      "expected_behavior": "Correct fix with no unrelated refactor",
+      "language": "typescript"
+    },
+    {
+      "id": "task-02",
+      "title": "Validate profile input",
+      "prompt": "Add input validation to a Python profile update function so empty names and invalid ages are rejected.",
+      "evaluation_notes": "Keep validation close to the trust boundary.",
+      "expected_behavior": "Reject invalid input and preserve valid updates",
+      "language": "python"
+    },
+    {
+      "id": "task-03",
+      "title": "Refactor price formatting",
+      "prompt": "Refactor repeated TypeScript price formatting into one helper.",
+      "evaluation_notes": "Avoid new dependencies and preserve existing output shape.",
+      "expected_behavior": "Shared helper with existing callers updated",
+      "language": "typescript"
+    },
+    {
+      "id": "task-04",
+      "title": "Add API timeout",
+      "prompt": "Add a timeout to a Python API integration that uses urllib.request.",
+      "evaluation_notes": "Use stdlib features and surface timeout errors clearly.",
+      "expected_behavior": "Network call has a finite timeout and readable failure path",
+      "language": "python"
+    },
+    {
+      "id": "task-05",
+      "title": "Add regression test",
+      "prompt": "Add a regression test for a slugify helper that collapses repeated separators.",
+      "evaluation_notes": "One focused test is enough.",
+      "expected_behavior": "Test fails on repeated separators and passes for normal slugs",
+      "language": "python"
+    }
+  ]
+}

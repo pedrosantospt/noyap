@@ -1,0 +1,12 @@
+{
+  "name": "noyap",
+  "description": "Result-first output discipline. Answer first, prove only what actually ran, flag only specific risk, then stop.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Pedro Santos",
+    "url": "https://github.com/pedrosantospt"
+  },
+  "homepage": "https://github.com/pedrosantospt/noyap",
+  "repository": "https://github.com/pedrosantospt/noyap",
+  "license": "MIT"
+}

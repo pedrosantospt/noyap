@@ -1,0 +1,66 @@
+{
+  "inspected_at": "2026-07-07",
+  "repositories": [
+    {
+      "name": "Caveman",
+      "url": "https://github.com/JuliusBrussee/caveman",
+      "branch": "main",
+      "commit_sha": "0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0",
+      "files_inspected": [
+        "README.md",
+        "AGENTS.md",
+        "skills/caveman/SKILL.md",
+        "benchmarks/run.py",
+        "benchmarks/prompts.json",
+        "evals/llm_run.py",
+        "evals/measure.py",
+        "evals/snapshots/results.json",
+        "INSTALL.md",
+        "src/hooks/*",
+        "commands/*"
+      ]
+    },
+    {
+      "name": "Ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "branch": "main",
+      "commit_sha": "1b2760d384c44e573a9d8c7a729fac616e5c3a76",
+      "files_inspected": [
+        "README.md",
+        "AGENTS.md",
+        "skills/ponytail/SKILL.md",
+        ".cursor/rules/ponytail.mdc",
+        ".windsurf/rules/ponytail.md",
+        ".github/copilot-instructions.md",
+        "benchmarks/README.md",
+        "benchmarks/promptfooconfig.yaml",
+        "benchmarks/loc.js",
+        "benchmarks/correctness.js",
+        "benchmarks/behavior.js",
+        "benchmarks/agentic/README.md",
+        "benchmarks/agentic/run.py",
+        "benchmarks/agentic/tasks.py",
+        "benchmarks/results/2026-06-18-agentic.md"
+      ]
+    },
+    {
+      "name": "Mimocode-ponytail",
+      "url": "https://github.com/pavnxet/Mimocode-ponytail",
+      "branch": "main",
+      "commit_sha": "75a810e88f782c3b8b0eba3c24f42977c4b0be1a",
+      "files_inspected": [
+        "README.md",
+        "AGENTS.md",
+        "skills/ponytail/SKILL.md",
+        "benchmarks/README.md",
+        "benchmarks/promptfooconfig.yaml",
+        "benchmarks/loc.js",
+        "benchmarks/correctness.js",
+        "benchmarks/benchmark-local.py",
+        "benchmarks/results/2026-06-12-caveman-vs-ponytail.md",
+        "benchmarks/results/2026-06-12-v4-hardening-vs-caveman.md",
+        "benchmarks/results/2026-06-15-llama3.2-local.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-07-07",
+  "notes": [
+    "Fixture outputs in this repo validate the benchmark pipeline.",
+    "They are not live model outputs and not imported upstream measurements."
+  ],
+  "baselines": [
+    {
+      "name": "Baseline",
+      "source_repository": "local",
+      "source_file_path": "benchmark/fixtures/baseline/*.md",
+      "source_commit_sha": null,
+      "license": "MIT",
+      "data_origin": "synthetic fixture",
+      "model_provider": null,
+      "model": null,
+      "number_of_runs": 0,
+      "token_source": "estimated by NoYap benchmark heuristic",
+      "loc_methodology": "non-empty lines inside fenced code blocks",
+      "import_date": "2026-07-07",
+      "provenance_complete": true
+    },
+    {
+      "name": "Caveman",
+      "source_repository": "https://github.com/JuliusBrussee/caveman",
+      "source_file_path": null,
+      "source_commit_sha": "0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0",
+      "license": "MIT",
+      "data_origin": "synthetic fixture",
+      "model_provider": null,
+      "model": null,
+      "number_of_runs": 0,
+      "token_source": "estimated by NoYap benchmark heuristic",
+      "loc_methodology": "non-empty lines inside fenced code blocks",
+      "import_date": "2026-07-07",
+      "provenance_complete": false
+    },
+    {
+      "name": "Ponytail",
+      "source_repository": "https://github.com/DietrichGebert/ponytail",
+      "source_file_path": null,
+      "source_commit_sha": "1b2760d384c44e573a9d8c7a729fac616e5c3a76",
+      "license": "MIT",
+      "data_origin": "synthetic fixture",
+      "model_provider": null,
+      "model": null,
+      "number_of_runs": 0,
+      "token_source": "estimated by NoYap benchmark heuristic",
+      "loc_methodology": "non-empty lines inside fenced code blocks",
+      "import_date": "2026-07-07",
+      "provenance_complete": false
+    },
+    {
+      "name": "NoYap",
+      "source_repository": "local",
+      "source_file_path": "benchmark/fixtures/noyap/*.md",
+      "source_commit_sha": null,
+      "license": "MIT",
+      "data_origin": "synthetic fixture",
+      "model_provider": null,
+      "model": null,
+      "number_of_runs": 0,
+      "token_source": "estimated by NoYap benchmark heuristic",
+      "loc_methodology": "non-empty lines inside fenced code blocks",
+      "import_date": "2026-07-07",
+      "provenance_complete": true
+    }
+  ]
+}

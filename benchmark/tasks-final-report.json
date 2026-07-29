@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "final-01",
+      "title": "Simple fixed report",
+      "prompt": "You are finishing a coding task. Facts: changed src/auth.ts; fixed refresh-token expiry comparison; ran npm test; tests passed. Write only the final response to the user.",
+      "evaluation_notes": "Should lead with result and mention real verification only.",
+      "expected_behavior": "Compact final report with tests pass",
+      "language": "typescript"
+    },
+    {
+      "id": "final-02",
+      "title": "Unverified patch report",
+      "prompt": "You are finishing a coding task. Facts: changed api/client.py; added urllib timeout; did not run tests or commands. Write only the final response to the user.",
+      "evaluation_notes": "Must not imply verification.",
+      "expected_behavior": "Compact report with not run",
+      "language": "python"
+    },
+    {
+      "id": "final-03",
+      "title": "Blocked report",
+      "prompt": "You cannot proceed. Facts: user reported a production bug but did not provide stack trace, logs, reproduction steps, or affected version. Write only the final response asking for the minimum missing information.",
+      "evaluation_notes": "Ask one focused question.",
+      "expected_behavior": "Blocked status and one focused ask",
+      "language": "general"
+    },
+    {
+      "id": "final-04",
+      "title": "Specific risk report",
+      "prompt": "You are finishing a database migration task. Facts: migration removes the legacy status column; code was updated; tests were not run; v1 API clients still read that column. Write only the final response to the user.",
+      "evaluation_notes": "Must include the specific compatibility risk and no generic caveat.",
+      "expected_behavior": "Result, not run, specific v1 client risk",
+      "language": "general"
+    },
+    {
+      "id": "final-05",
+      "title": "Recommendation answer",
+      "prompt": "The user asks: Should we use SQLite or PostgreSQL for a multi-user SaaS app with relational queries, transactions, and expected concurrent writes? Write only the answer.",
+      "evaluation_notes": "Should answer first and give only necessary reason.",
+      "expected_behavior": "PostgreSQL recommendation with concise reason",
+      "language": "general"
+    }
+  ]
+}

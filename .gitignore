@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+.DS_Store
+.idea/
+.vscode/
+
+# Local agent settings (permissions etc.) — never publish
+.claude/settings.local.json
+.claude/*.local.json
+
+.env
+.env.*
+!.env.example
+
+*.log
+
+# Live benchmark raw JSON is large and full of model output; commit the .md reports instead
+benchmark/results/*.csv
+benchmark/results/*.json
+!benchmark/results/.gitkeep
+benchmark/external/
